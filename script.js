@@ -1,65 +1,48 @@
 
-// 🔥 완전 안전 실행
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🔥 로딩 제거 (안전)
+  // 로딩 제거
   const loading = document.getElementById("loading");
   if (loading) loading.style.display = "none";
 
-  // 🔍 search
+  // 검색
   const search = document.getElementById("search");
   const cards = document.querySelectorAll(".card");
 
-  if (search && cards.length > 0) {
-
+  if (search) {
     search.addEventListener("input", () => {
+      const v = search.value.toLowerCase();
 
-      const value = search.value.toLowerCase();
-
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(value) ? "block" : "none";
+      cards.forEach(c => {
+        c.style.display = c.textContent.toLowerCase().includes(v) ? "flex" : "none";
       });
-
     });
-
   }
 
-  // 🚀 viewer
+  // 앱 실행
   const viewer = document.getElementById("viewer");
   const frame = document.getElementById("frame");
   const title = document.getElementById("title");
   const back = document.getElementById("back");
 
-  if (viewer && frame && title) {
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const url = card.dataset.url;
+      if (!url) return;
 
-    cards.forEach(card => {
+      frame.src = url;
+      title.innerText = card.querySelector("h2").innerText;
 
-      card.addEventListener("click", () => {
-
-        const url = card.dataset.url;
-
-        if (!url) return;
-
-        frame.src = url;
-        title.innerText = card.querySelector("h2").innerText;
-
-        viewer.style.display = "flex";
-
-      });
-
+      viewer.style.display = "flex";
     });
+  });
 
-  }
-
-  // ⬅ 뒤로가기
-  if (back && viewer && frame) {
-
+  // 뒤로가기
+  if (back) {
     back.addEventListener("click", () => {
       viewer.style.display = "none";
       frame.src = "";
     });
-
   }
 
 });
