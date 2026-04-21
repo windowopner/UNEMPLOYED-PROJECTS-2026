@@ -5,6 +5,17 @@ body {
   color: white;
 }
 
+/* 로딩 */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
 /* 헤더 */
 header {
   text-align: center;
@@ -36,11 +47,11 @@ main {
   transform: scale(1.05);
 }
 
-/* 🚀 앱 뷰어 */
+/* 앱 뷰어 */
 #viewer {
   position: fixed;
   inset: 0;
-  background: #0a0a0a;
+  background: #000;
   display: none;
   flex-direction: column;
 }
