@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Project Hub</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- 🔥 로딩 화면 -->
+<!-- 🔥 로딩 -->
 <div id="loading">
   <h2>Loading...</h2>
 </div>
@@ -21,11 +20,10 @@
   <p>HTML / Electronics / Coding Projects</p>
 
   <input type="text" id="search" placeholder="프로젝트 검색...">
-
   <button id="toggleTheme">🌙 Dark Mode</button>
 </header>
 
-<main id="projectGrid">
+<main>
 
   <div class="card" data-name="calculator html project">
     <h2>💻 Calculator</h2>
@@ -51,8 +49,18 @@
   <p>Made by Root ⚡</p>
 </footer>
 
-<!-- JS -->
-<script src="script.js"></script>
+<!-- 🔥 모달 -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="closeBtn">&times;</span>
 
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+
+    <a id="modalLink" href="#" target="_blank">Open Project</a>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
