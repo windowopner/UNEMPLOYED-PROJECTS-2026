@@ -1,18 +1,12 @@
-// 🌙 다크 모드
+// 🌙 다크모드
 const btn = document.getElementById("toggleTheme");
 
 btn.addEventListener("click", () => {
   document.body.classList.toggle("light");
-
-  if (document.body.classList.contains("light")) {
-    btn.textContent = "🌞 Light Mode";
-  } else {
-    btn.textContent = "🌙 Dark Mode";
-  }
 });
 
 
-// 🔍 검색 필터
+// 🔍 검색
 const search = document.getElementById("search");
 const cards = document.querySelectorAll(".card");
 
@@ -21,34 +15,42 @@ search.addEventListener("input", () => {
 
   cards.forEach(card => {
     const name = card.getAttribute("data-name");
-
-    if (name.includes(value)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+    card.style.display = name.includes(value) ? "block" : "none";
   });
 });
 
 
-// ⚡ 로딩 제거
+// ⚡ 로딩
 window.addEventListener("load", () => {
   const loading = document.getElementById("loading");
-
-  loading.style.opacity = "0";
-
-  setTimeout(() => {
-    loading.style.display = "none";
-  }, 500);
+  loading.style.display = "none";
 });
 
 
-// 💥 카드 클릭 효과
+// 💥 모달
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementById("closeBtn");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalLink = document.getElementById("modalLink");
+
 document.querySelectorAll(".card").forEach(card => {
   card.addEventListener("click", () => {
-    card.style.transform = "scale(0.98)";
-    setTimeout(() => {
-      card.style.transform = "";
-    }, 150);
+    modalTitle.innerText = card.querySelector("h2").innerText;
+    modalDesc.innerText = card.querySelector("p").innerText;
+    modalLink.href = card.querySelector("a").href;
+
+    modal.style.display = "flex";
   });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
 });
