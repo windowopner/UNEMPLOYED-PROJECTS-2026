@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electronics - Microcontroller</title>
+    <link rel="stylesheet" href="../project.css" />
+  </head>
+  <body>
+    <div class="project-shell">
+      <div class="project-frame">
+        <section class="project-panel">
+          <p class="project-tag">Workspace / 02</p>
+          <h1>Electronics - Microcontroller</h1>
+          <p class="project-copy">
+            A focused view for firmware tests, pin planning, and embedded
+            experiments that need quick iteration without visual clutter.
+          </p>
+
+          <div class="feature-strip">
+            <span>Firmware staging</span>
+            <span>I/O mapping</span>
+            <span>Board check</span>
+          </div>
+
+          <div class="action-row">
+            <button
+              type="button"
+              data-message="Demo boot sequence completed. Firmware test path is active."
+            >
+              Run demo
+            </button>
+            <button
+              class="secondary"
+              type="button"
+              data-message="Pin map loaded. Review the active channels before the next flash."
+            >
+              Show pin map
+            </button>
+          </div>
+
+          <div class="status-bar" data-status>
+            Embedded tools ready. Pick a control to continue.
+          </div>
+        </section>
+
+        <aside class="project-side">
+          <div class="mini-section">
+            <p class="mini-label">Signal</p>
+            <h2>Hardware-first flow</h2>
+            <p>
+              This page turns the previously missing microcontroller route into a
+              real destination inside the iframe viewer.
+            </p>
+          </div>
+
+          <div class="mini-section">
+            <p class="mini-label">Stack</p>
+            <div class="list-grid">
+              <span class="list-chip">Timers</span>
+              <span class="list-chip">Sensors</span>
+              <span class="list-chip">Serial</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="../project.js"></script>
+  </body>
+</html>
