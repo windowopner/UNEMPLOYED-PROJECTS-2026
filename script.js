@@ -1,60 +1,78 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-
-  // 🔥 로딩 제거
   const loading = document.getElementById("loading");
-  if (loading) loading.style.display = "none";
-
   const search = document.getElementById("search");
-  const cards = document.querySelectorAll(".card");
-
-  // 🔍 검색
-  if (search) {
-    search.addEventListener("input", () => {
-      const v = search.value.toLowerCase();
-
-      cards.forEach(c => {
-        c.style.display =
-          c.textContent.toLowerCase().includes(v) ? "flex" : "none";
-      });
-    });
-  }
-
-  // 🚀 앱 실행
+  const cards = Array.from(document.querySelectorAll(".card"));
   const viewer = document.getElementById("viewer");
   const frame = document.getElementById("frame");
   const title = document.getElementById("title");
   const back = document.getElementById("back");
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
+  const hideLoading = () => {
+    if (!loading) {
+      return;
+    }
 
-      const url = card.dataset.url;
+    window.setTimeout(() => {
+      loading.classList.add("is-hidden");
+    }, 160);
+  };
 
-      // ❌ 비어있거나 #이면 차단
-      if (!url || url === "#") {
-        alert("Coming soon 🚧");
-        return;
-      }
+  const closeViewer = () => {
+    if (!viewer || !frame) {
+      return;
+    }
 
-      // 🔥 핵심: 캐시 완전 무시 (중요 추가)
-      const cacheBustedUrl = url + "?v=" + Date.now();
+    viewer.classList.remove("is-visible");
+    viewer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("viewer-open");
+    frame.src = "about:blank";
+  };
 
-      frame.src = cacheBustedUrl;
+  const openViewer = (card) => {
+    if (!viewer || !frame || !title) {
+      return;
+    }
 
-      title.innerText =
-        card.querySelector("h2")?.innerText || "Project";
+    const url = card.dataset.url;
 
-      viewer.style.display = "flex";
-    });
-  });
+    if (!url) {
+      return;
+    }
 
-  // ⬅ 뒤로가기
-  if (back) {
-    back.addEventListener("click", () => {
-      viewer.style.display = "none";
-      frame.src = "about:blank";
+    const separator = url.includes("?") ? "&" : "?";
+    frame.src = `${url}${separator}v=${Date.now()}`;
+    title.textContent =
+      card.querySelector(".card-title")?.textContent || "Project";
+
+    viewer.classList.add("is-visible");
+    viewer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("viewer-open");
+  };
+
+  if (search) {
+    search.addEventListener("input", () => {
+      const value = search.value.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const haystack = `${card.textContent} ${card.dataset.search || ""}`.toLowerCase();
+        card.hidden = value ? !haystack.includes(value) : false;
+      });
     });
   }
 
+  cards.forEach((card) => {
+    card.addEventListener("click", () => openViewer(card));
+  });
+
+  if (back) {
+    back.addEventListener("click", closeViewer);
+  }
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && viewer?.classList.contains("is-visible")) {
+      closeViewer();
+    }
+  });
+
+  hideLoading();
 });

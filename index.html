@@ -1,51 +1,116 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unemployment Footage hub</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unemployment Footage Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loading" aria-hidden="true">
+      <div class="loading-panel">
+        <span class="loading-tag">ARCHIVE</span>
+        <strong>Loading hub</strong>
+      </div>
+    </div>
 
-<link rel="stylesheet" href="style.css">
-</head>
+    <div class="shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">UNEMPLOYED PROJECTS / 2026</p>
+          <h1>Unemployment Footage Hub</h1>
+          <p class="hero-text">
+            A cold, minimal control room for electronics, experiments, and code
+            work in one place.
+          </p>
+        </div>
 
-<body>
+        <div class="hero-tools">
+          <label class="search-field" for="search">
+            <span>Find project</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search by title or tag"
+              autocomplete="off"
+            />
+          </label>
 
-<div id="loading">Loading...</div>
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            <span>3 live surfaces ready</span>
+          </div>
+        </div>
+      </header>
 
-<header>
-  <h1>Unemployment Footage Hub</h1>
-  <input id="search" placeholder="Search">
-</header>
+      <main id="hub" aria-label="Project hub">
+        <button
+          class="card"
+          type="button"
+          data-url="html/project1/index.html"
+          data-search="other electronics repair lab gear"
+        >
+          <span class="card-head">
+            <span class="card-index">/01</span>
+            <span class="card-state">Live</span>
+          </span>
+          <span class="card-mark">EL</span>
+          <strong class="card-title">Other electronics</strong>
+          <span class="card-copy">
+            Repair notes, utility gear, and fast-access references.
+          </span>
+          <span class="card-foot">Open workspace</span>
+        </button>
 
-<main>
+        <button
+          class="card"
+          type="button"
+          data-url="electronics/project1.html"
+          data-search="electronics microcontroller firmware io boards"
+        >
+          <span class="card-head">
+            <span class="card-index">/02</span>
+            <span class="card-state">Live</span>
+          </span>
+          <span class="card-mark">MC</span>
+          <strong class="card-title">Electronics - Microcontroller</strong>
+          <span class="card-copy">
+            Firmware staging, board checks, and embedded build notes.
+          </span>
+          <span class="card-foot">Open workspace</span>
+        </button>
 
-  <div class="card" data-url="html/project1/index.html">
-    <div class="icon">🔌</div>
-    <h2>Other electronics</h2>
-  </div>
+        <button
+          class="card"
+          type="button"
+          data-url="programming/project1.html"
+          data-search="programming projects scripting automation code"
+        >
+          <span class="card-head">
+            <span class="card-index">/03</span>
+            <span class="card-state">Live</span>
+          </span>
+          <span class="card-mark">PR</span>
+          <strong class="card-title">Programming projects</strong>
+          <span class="card-copy">
+            Utilities, experiments, and the next ideas waiting in queue.
+          </span>
+          <span class="card-foot">Open workspace</span>
+        </button>
+      </main>
+    </div>
 
-  <div class="card" data-url="electronics/project1.html">
-    <div class="icon">⚡️</div>
-    <h2>Electronics - Microcontroller</h2>
-  </div>
+    <div id="viewer" aria-hidden="true">
+      <div id="topbar">
+        <button id="back" type="button">Back</button>
+        <div class="viewer-meta">
+          <span class="viewer-kicker">PROJECT VIEW</span>
+          <span id="title">Project</span>
+        </div>
+      </div>
+      <iframe id="frame" title="Project viewer" loading="lazy"></iframe>
+    </div>
 
-  <div class="card" data-url="#">
-    <div class="icon">👨🏻‍💻</div>
-    <h2>Programming projects</h2>
-  </div>
-
-</main>
-
-<!-- 앱 뷰어 -->
-<div id="viewer">
-  <div id="topbar">
-    <span id="back">⬅ Back</span>
-    <span id="title"></span>
-  </div>
-
-  <iframe id="frame"></iframe>
-</div>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
