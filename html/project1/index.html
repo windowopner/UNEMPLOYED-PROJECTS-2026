@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project 1</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other electronics</title>
+    <link rel="stylesheet" href="../../project.css" />
+  </head>
+  <body>
+    <div class="project-shell">
+      <div class="project-frame">
+        <section class="project-panel">
+          <p class="project-tag">Workspace / 01</p>
+          <h1>Other electronics</h1>
+          <p class="project-copy">
+            A clean surface for repair logs, utility hardware, and the small
+            gear that keeps bigger builds moving.
+          </p>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1a2e, #0f0f0f);
-  color: white;
+          <div class="feature-strip">
+            <span>Repair flow</span>
+            <span>Bench notes</span>
+            <span>Fast inventory</span>
+          </div>
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+          <div class="action-row">
+            <button
+              type="button"
+              data-message="Bench session is open. You can start logging the next repair."
+            >
+              Open bench
+            </button>
+            <button
+              class="secondary"
+              type="button"
+              data-message="Parts list refreshed. The latest utility gear is ready to review."
+            >
+              Refresh parts
+            </button>
+          </div>
 
-/* 카드 느낌 */
-.container {
-  background: rgba(255,255,255,0.06);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
+          <div class="status-bar" data-status>
+            Ready. Pick an action to update this workspace.
+          </div>
+        </section>
 
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
+        <aside class="project-side">
+          <div class="mini-section">
+            <p class="mini-label">Current focus</p>
+            <h2>Cold, minimal workspace</h2>
+            <p>
+              The panel layout follows the same dark, quiet visual system as the
+              hub so the iframe feels like a real product surface.
+            </p>
+          </div>
 
-h1 {
-  margin-bottom: 20px;
-}
+          <div class="mini-section">
+            <p class="mini-label">Modules</p>
+            <div class="list-grid">
+              <span class="list-chip">Power</span>
+              <span class="list-chip">Audio</span>
+              <span class="list-chip">Repair</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
 
-/* 버튼 */
-button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-
-  background: #38bdf8;
-  color: black;
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-  <h1>⚡ Project 1</h1>
-  <p>Test UI inside iframe</p>
-
-  <button onclick="alert('Hello!')">
-    Run Test
-  </button>
-</div>
-
-</body>
+    <script src="../../project.js"></script>
+  </body>
 </html>
