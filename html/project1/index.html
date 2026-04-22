@@ -1,2 +1,67 @@
-<h1>Project 1</h1>
-<button onclick="alert('Hello!')">Test</button>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 1</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a1a2e, #0f0f0f);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 카드 느낌 */
+.container {
+  background: rgba(255,255,255,0.06);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* 버튼 */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>⚡ Project 1</h1>
+  <p>Test UI inside iframe</p>
+
+  <button onclick="alert('Hello!')">
+    Run Test
+  </button>
+</div>
+
+</body>
+</html>
