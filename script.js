@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const rawArchiveData = [
+  const archiveData = [
     {
       id: "other-electronics",
       theme: "cyan",
@@ -421,26 +421,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  const placeholderTags = ["In progress..", "Coming soon", "Coming soon"];
-  const archiveData = rawArchiveData.map((category) => ({
-    ...category,
-    summary: "Coming soon",
-    projects: category.projects.map((project) => ({
-      ...project,
-      title: "In progress..",
-      tagline: "Coming soon",
-      enterUrl: "",
-      versions: project.versions.map((version) => ({
-        ...version,
-        state: "Coming soon",
-        summary: "Coming soon",
-        tags: placeholderTags,
-        runUrl: "",
-        downloadUrl: "",
-      })),
-    })),
-  }));
-
   const loading = document.getElementById("loading");
   const search = document.getElementById("search");
   const hub = document.getElementById("hub");
@@ -596,12 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <div class="stage-actions">
-                  <button
-                    type="button"
-                    class="stage-action primary is-disabled"
-                    data-action="enter"
-                    aria-disabled="true"
-                  >
+                  <button type="button" class="stage-action primary" data-action="enter">
                     Enter branch
                   </button>
                   <button type="button" class="stage-action" data-action="run">
@@ -784,7 +759,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (enterButton) {
-      enterButton.dataset.url = "";
+      enterButton.dataset.url = project.enterUrl || category.rootUrl || "";
       enterButton.dataset.label = project.title;
     }
 
@@ -937,7 +912,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const label = button.dataset.label || "Selection";
 
           if (action === "enter") {
-            showToast("Coming soon");
+            if (!url) {
+              showToast(`${label} has no linked surface yet.`);
+              return;
+            }
+
+            openViewerWithUrl(url, label);
             return;
           }
 
